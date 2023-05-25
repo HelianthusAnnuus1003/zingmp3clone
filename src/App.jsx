@@ -1,12 +1,19 @@
-import './App.css'
+import "./App.css";
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
+    const dispatch = useDispatch();
+    const { test } = useSelector((state) => state.app);
 
-  return (
-    <>
-      <h1>Hello world</h1>
-    </>
-  )
+    console.log(test);
+
+    return (
+        <>
+            <h1 className="text-[30px] font-bold bg-gray-300 p-5 text-red-500">
+                Hello world!
+            </h1>
+        </>
+    );
 }
 
-export default App
+export default App;
