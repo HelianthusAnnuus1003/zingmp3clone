@@ -1,17 +1,19 @@
 import "./App.css";
-import { useDispatch, useSelector } from "react-redux";
+import { Routes, Route } from "react-router-dom";
+import { Home, Login, Public } from "./pages/public";
+import paths from "./ultils/paths";
 
 function App() {
-    const dispatch = useDispatch();
-    const { test } = useSelector((state) => state.app);
-
-    console.log(test);
-
+    // Nested routes => Hiển thị các trang khác nhau ở chung bên trong một layout
+    // Layout chung, gốc là Public, các component khác sẽ có chung layout đó
     return (
         <>
-            <h1 className="text-[30px] font-bold bg-gray-300 p-5 text-red-500">
-                Hello world!
-            </h1>
+            <Routes>
+                <Route path={paths.PUBLIC} element={<Public />}>
+                    <Route path={paths.HOME} element={<Home />} />
+                    <Route path={paths.LOGIN} element={<Login />} />
+                </Route>
+            </Routes>
         </>
     );
 }
